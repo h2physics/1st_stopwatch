@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">StopWatch</string>
     <string name="action_settings">Settings</string>
+
+    <string name="buttonStart">Start</string>
+    <string name="buttonGet">Get</string>
+    <string name="buttonPause">Pause</string>
+    <string name="buttonStop">Stop</string>
 </resources>

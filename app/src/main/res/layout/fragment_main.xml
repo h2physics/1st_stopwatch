@@ -1,19 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.h2physics.stopwatch.MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        app:layout_heightPercent="60%">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewTimer"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/colorBlack"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <ListView
+        android:id="@+id/listViewTime"
+        app:layout_widthPercent="90%"
+        app:layout_heightPercent="30%"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginBottomPercent="10%">
+
+    </ListView>
+
+    <android.support.percent.PercentRelativeLayout
+        app:layout_widthPercent="90%"
+        app:layout_heightPercent="10%"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:text="@string/buttonStart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/buttonLeft"
+            android:text="@string/buttonGet"
+            android:layout_height="match_parent"
+            app:layout_widthPercent="50%"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/buttonRight"
+            android:text="@string/buttonStop"
+            android:layout_height="match_parent"
+            app:layout_widthPercent="50%"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>
