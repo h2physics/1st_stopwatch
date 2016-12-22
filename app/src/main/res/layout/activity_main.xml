@@ -9,15 +9,28 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="50dp"
+        android:backgroundTint="@color/colorPrimary">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonCountdown"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="50%"
+                android:backgroundTint="@color/colorPrimary"/>
+
+            <Button
+                android:id="@+id/buttonCountup"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="50%"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </android.support.percent.PercentRelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
 
