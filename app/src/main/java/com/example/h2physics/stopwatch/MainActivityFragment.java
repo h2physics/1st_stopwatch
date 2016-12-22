@@ -32,9 +32,12 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     String timeClock;
 
-    ArrayList<TimerInformation> mTime = new ArrayList<>();
+//    ArrayList<TimerInformation> mTime = new ArrayList<>();
+    ArrayList<String> arrayList = new ArrayList<>();
 
-    TimeAdapter timeAdapter;
+//    TimeAdapter timeAdapter;
+
+    ArrayAdapter<String> adapter;
 
     final int MSG_START_TIMER = 0;
     final int MSG_STOP_TIMER = 1;
@@ -73,7 +76,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                 case MSG_STOP_TIMER:
                     handler.removeMessages(MSG_UPDATE_TIMER); // no more updates.
                     timer.stop();//stop timer
-                    textViewTimer.setText(""+ timer.getElapsedTime()/1000);
+                    textViewTimer.setText(timeClock);
                     break;
 
                 default:
@@ -101,9 +104,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         buttonLeft.setOnClickListener(this);
         buttonRight.setOnClickListener(this);
 
-        timeAdapter = new TimeAdapter(getActivity(), mTime);
+        //timeAdapter = new TimeAdapter(getActivity(), mTime);
 
-        listViewTimer.setAdapter(timeAdapter);
+        adapter = new ArrayAdapter<String>(getActivity(),
+                R.layout.layout_timer,
+                R.id.textViewTimerResult,
+                new ArrayList<String>());
+
+        listViewTimer.setAdapter(adapter);
 
         return rootView;
     }
@@ -117,17 +125,20 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.buttonLeft){
-            mTime.add(new TimerInformation(String.valueOf(indexArrayList + 1), timeClock));
+//            mTime.add(new TimerInformation(String.valueOf(indexArrayList + 1), timeClock));
+//            Log.e("Array", mTime.get(indexArrayList).toString());
+            adapter.add(timeClock);
+
             indexArrayList++;
         } else if (id == R.id.buttonRight){
             handler.sendEmptyMessage(MSG_STOP_TIMER);
-            textViewTimer.setText("0 : 0 : 0");
+            //textViewTimer.setText("0 : 0 : 0");
             buttonStart.setVisibility(View.VISIBLE);
             buttonLeft.setVisibility(View.INVISIBLE);
             buttonRight.setVisibility(View.INVISIBLE);
         } else if (id == R.id.buttonStart){
             handler.sendEmptyMessage(MSG_START_TIMER);
-            timeAdapter.clear();
+            adapter.clear();
             buttonStart.setVisibility(View.INVISIBLE);
             buttonLeft.setVisibility(View.VISIBLE);
             buttonRight.setVisibility(View.VISIBLE);

@@ -28,4 +28,12 @@ public class TimerInformation {
     public void setTimeClock(String timeClock) {
         this.timeClock = timeClock;
     }
+
+    @Override
+    public String toString() {
+        return "TimerInformation{" +
+                "index='" + index + '\'' +
+                ", timeClock='" + timeClock + '\'' +
+                '}';
+    }
 }

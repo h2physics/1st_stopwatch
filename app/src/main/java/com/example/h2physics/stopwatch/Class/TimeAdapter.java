@@ -29,17 +29,16 @@ public class TimeAdapter extends ArrayAdapter<TimerInformation> {
 
     }
 
-    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TimerInformation timerInformation = mTime.get(position);
 
         convertView = mLayoutInflater.inflate(R.layout.layout_timer, parent, false);
 
-        TextView textViewNumber = (TextView) convertView.findViewById(R.id.textViewNumber);
+        //TextView textViewNumber = (TextView) convertView.findViewById(R.id.textViewNumber);
         TextView textViewTimeResult = (TextView) convertView.findViewById(R.id.textViewTimerResult);
 
-        textViewNumber.setText(timerInformation.getIndex());
+        //textViewNumber.setText(timerInformation.getIndex());
         textViewTimeResult.setText(timerInformation.getTimeClock());
 
         return convertView;
