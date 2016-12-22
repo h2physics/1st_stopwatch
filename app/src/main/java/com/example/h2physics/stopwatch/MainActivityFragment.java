@@ -42,6 +42,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     final int MSG_START_TIMER = 0;
     final int MSG_STOP_TIMER = 1;
     final int MSG_UPDATE_TIMER = 2;
+    final int MSG_RESUME_TIMER = 3;
+    final int MSG_PAUSE_TIMER = 4;
     int indexArrayList = 0;
 
     StopWatch timer = new StopWatch();
@@ -78,6 +80,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     timer.stop();//stop timer
                     textViewTimer.setText(timeClock);
                     break;
+
 
                 default:
                     break;
@@ -129,13 +132,15 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 //            Log.e("Array", mTime.get(indexArrayList).toString());
             adapter.add(timeClock);
 
-            indexArrayList++;
+//
+//            indexArrayList++;
         } else if (id == R.id.buttonRight){
             handler.sendEmptyMessage(MSG_STOP_TIMER);
             //textViewTimer.setText("0 : 0 : 0");
             buttonStart.setVisibility(View.VISIBLE);
             buttonLeft.setVisibility(View.INVISIBLE);
             buttonRight.setVisibility(View.INVISIBLE);
+
         } else if (id == R.id.buttonStart){
             handler.sendEmptyMessage(MSG_START_TIMER);
             adapter.clear();

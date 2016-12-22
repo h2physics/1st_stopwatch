@@ -8,6 +8,7 @@ public class StopWatch {
 
     private long startTime = 0;
     private long stopTime = 0;
+    private long pauseTime = 0;
     private boolean running = false;
 
 
@@ -16,8 +17,9 @@ public class StopWatch {
         this.running = true;
     }
 
-    public void pause(){
-
+    public void pause(long timeCurrent){
+        this.pauseTime = timeCurrent;
+        this.running = true;
     }
 
     public void stop() {
