@@ -28,36 +28,39 @@
         android:paddingLeft="20dp"
         app:layout_marginBottomPercent="12%">
 
-        <Button
+        <TextView
             android:id="@+id/buttonGet"
             android:background="@drawable/circle_button_blue"
             android:text="@string/buttonGet"
             android:textSize="25sp"
             android:textColor="@color/colorBlue_2"
+            android:gravity="center"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:visibility="visible"/>
 
-        <Button
+        <TextView
             android:id="@+id/buttonStart"
             android:background="@drawable/circle_button_start"
             android:text="@string/buttonStart"
             android:textSize="25sp"
             android:textColor="@color/colorBlue"
+            android:gravity="center"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:visibility="visible"/>
 
-        <Button
+        <TextView
             android:id="@+id/buttonStop"
             android:background="@drawable/circle_button_orange"
             android:text="@string/buttonStop"
             android:textSize="25sp"
             android:textColor="@color/colorOrange"
+            android:gravity="center"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_alignParentEnd="true"
@@ -75,14 +78,15 @@
 
         <TextView
             android:id="@+id/textViewTimer"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:textSize="65sp"
+            android:textSize="80sp"
             android:text="00:00,00"
-            android:textColor="@color/colorBlue"/>
+            android:textColor="@color/colorBlue"
+            />
 
     </android.support.percent.PercentRelativeLayout>
 

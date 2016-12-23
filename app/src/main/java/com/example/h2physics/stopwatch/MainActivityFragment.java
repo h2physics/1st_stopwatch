@@ -27,9 +27,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     TextView textViewTimer;
     ListView listViewTimer;
     TextView textViewTimeResult;
-    Button buttonGet;
-    Button buttonStart;
-    Button buttonStop;
+    TextView buttonGet;
+    TextView buttonStart;
+    TextView buttonStop;
     //TextView textViewNumber;
 
     String timeClock;
@@ -116,12 +116,6 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("Roboto-Thin.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
-
         textViewTimer = (TextView) rootView.findViewById(R.id.textViewTimer);
         listViewTimer = (ListView) rootView.findViewById(R.id.listViewTime);
         textViewTimeResult = (TextView) rootView.findViewById(R.id.textViewTimerResult);
@@ -129,9 +123,13 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         textViewTimer.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
 //        textViewTimeResult.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
 
-        buttonGet = (Button) rootView.findViewById(R.id.buttonGet);
-        buttonStart = (Button) rootView.findViewById(R.id.buttonStart);
-        buttonStop = (Button) rootView.findViewById(R.id.buttonStop);
+        buttonGet = (TextView) rootView.findViewById(R.id.buttonGet);
+        buttonStart = (TextView) rootView.findViewById(R.id.buttonStart);
+        buttonStop = (TextView) rootView.findViewById(R.id.buttonStop);
+
+        buttonGet.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
+        buttonStart.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
+        buttonStop.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
         //textViewNumber = (TextView) rootView.findViewById(R.id.textViewNumber);
 
         buttonGet.setOnClickListener(this);
