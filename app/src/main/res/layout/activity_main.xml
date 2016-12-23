@@ -7,33 +7,8 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.h2physics.stopwatch.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/colorPrimary">
-
-        <android.support.percent.PercentRelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/buttonCountdown"
-                android:layout_height="match_parent"
-                app:layout_widthPercent="50%"
-                android:backgroundTint="@color/colorPrimary"/>
-
-            <Button
-                android:id="@+id/buttonCountup"
-                android:backgroundTint="@color/colorPrimary"
-                android:layout_height="match_parent"
-                app:layout_widthPercent="50%"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </android.support.percent.PercentRelativeLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/fragment_content"
+        layout="@layout/content_main" />
 
 </android.support.design.widget.CoordinatorLayout>

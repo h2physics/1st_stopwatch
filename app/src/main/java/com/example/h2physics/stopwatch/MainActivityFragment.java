@@ -14,8 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.h2physics.stopwatch.Class.StopWatch;
-import com.example.h2physics.stopwatch.Class.TimeAdapter;
-import com.example.h2physics.stopwatch.Class.TimerInformation;
+import com.example.h2physics.stopwatch.Class.Typefaces;
 
 import java.util.ArrayList;
 
@@ -25,9 +24,10 @@ import java.util.ArrayList;
 public class MainActivityFragment extends Fragment implements View.OnClickListener{
     TextView textViewTimer;
     ListView listViewTimer;
+    TextView textViewTimeResult;
+    Button buttonGet;
     Button buttonStart;
-    Button buttonLeft;
-    Button buttonRight;
+    Button buttonStop;
     //TextView textViewNumber;
 
     String timeClock;
@@ -44,7 +44,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     final int MSG_UPDATE_TIMER = 2;
     final int MSG_RESUME_TIMER = 3;
     final int MSG_PAUSE_TIMER = 4;
-    int indexArrayList = 0;
+    int index = 1;
 
     StopWatch timer = new StopWatch();
     final int REFRESH_RATE = 1000;
@@ -67,9 +67,27 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     min = sec / 60;
                     sec = sec - 60 * min;
 
-                    Log.e("Time", hour + " : " + min + " : " + sec);
+                    String secStr = null, minStr = null, hourStr = null;
 
-                    timeClock = hour + " : " + min + " : " + sec;
+                    if(sec < 10){
+                        secStr = "0" + sec;
+                    } else {
+                        secStr = sec + "";
+                    }
+                    if(min < 10){
+                        minStr = "0" + min;
+                    } else {
+                        minStr = min + "";
+                    }
+                    if(hour < 10){
+                        hourStr = "0" + hour;
+                    } else {
+                        hourStr = hour + "";
+                    }
+
+                    timeClock = hourStr + ":" + minStr + "," + secStr;
+
+                    //Log.e("Time",timeClock);
 
                     textViewTimer.setText(timeClock);
                     handler.sendEmptyMessageDelayed(MSG_UPDATE_TIMER,REFRESH_RATE); //text view is updated every second,
@@ -98,14 +116,19 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
         textViewTimer = (TextView) rootView.findViewById(R.id.textViewTimer);
         listViewTimer = (ListView) rootView.findViewById(R.id.listViewTime);
+        textViewTimeResult = (TextView) rootView.findViewById(R.id.textViewTimerResult);
+
+        textViewTimer.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
+//        textViewTimeResult.setTypeface(Typefaces.get(getContext(), "Roboto-Thin.ttf"));
+
+        buttonGet = (Button) rootView.findViewById(R.id.buttonGet);
         buttonStart = (Button) rootView.findViewById(R.id.buttonStart);
-        buttonLeft = (Button) rootView.findViewById(R.id.buttonLeft);
-        buttonRight = (Button) rootView.findViewById(R.id.buttonRight);
+        buttonStop = (Button) rootView.findViewById(R.id.buttonStop);
         //textViewNumber = (TextView) rootView.findViewById(R.id.textViewNumber);
 
+        buttonGet.setOnClickListener(this);
         buttonStart.setOnClickListener(this);
-        buttonLeft.setOnClickListener(this);
-        buttonRight.setOnClickListener(this);
+        buttonStop.setOnClickListener(this);
 
         //timeAdapter = new TimeAdapter(getActivity(), mTime);
 
@@ -127,26 +150,27 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.buttonLeft){
-//            mTime.add(new TimerInformation(String.valueOf(indexArrayList + 1), timeClock));
-//            Log.e("Array", mTime.get(indexArrayList).toString());
-            adapter.add(timeClock);
 
-//
-//            indexArrayList++;
-        } else if (id == R.id.buttonRight){
-            handler.sendEmptyMessage(MSG_STOP_TIMER);
-            //textViewTimer.setText("0 : 0 : 0");
-            buttonStart.setVisibility(View.VISIBLE);
-            buttonLeft.setVisibility(View.INVISIBLE);
-            buttonRight.setVisibility(View.INVISIBLE);
-
-        } else if (id == R.id.buttonStart){
+        if (id == R.id.buttonStart && buttonStart.getVisibility() == View.VISIBLE){
             handler.sendEmptyMessage(MSG_START_TIMER);
             adapter.clear();
+            index = 1;
+
             buttonStart.setVisibility(View.INVISIBLE);
-            buttonLeft.setVisibility(View.VISIBLE);
-            buttonRight.setVisibility(View.VISIBLE);
+            buttonStop.setVisibility(View.VISIBLE);
+
+        } else if (id == R.id.buttonStop && buttonStop.getVisibility() == View.VISIBLE){
+            handler.sendEmptyMessage(MSG_STOP_TIMER);
+
+            buttonStart.setVisibility(View.VISIBLE);
+            buttonStop.setVisibility(View.INVISIBLE);
+
+        } else if (id == R.id.buttonGet){
+            if (buttonStart.getVisibility() == View.INVISIBLE){
+                adapter.add(index + ".   " + timeClock);
+                index++;
+            }
         }
+
     }
 }

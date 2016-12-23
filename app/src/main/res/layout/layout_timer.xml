@@ -21,10 +21,15 @@
 
     <TextView
         android:id="@+id/textViewTimerResult"
-        app:layout_widthPercent="50%"
-        android:layout_height="60dp"
-        android:textColor="@color/colorBlack"
+        android:background="@drawable/border_bottom_view"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        app:layout_widthPercent="100%"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlue"
         android:gravity="center"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"/>
 
 </android.support.percent.PercentRelativeLayout>
