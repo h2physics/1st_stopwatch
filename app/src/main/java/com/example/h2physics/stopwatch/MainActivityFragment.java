@@ -18,6 +18,8 @@ import com.example.h2physics.stopwatch.Class.Typefaces;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -113,6 +115,12 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("Roboto-Thin.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
 
         textViewTimer = (TextView) rootView.findViewById(R.id.textViewTimer);
         listViewTimer = (ListView) rootView.findViewById(R.id.listViewTime);

@@ -5,20 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<RelativeLayout-->
-        <!--app:layout_widthPercent="50%"-->
-        <!--android:layout_height="60dp">-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/textViewNumber"-->
-            <!--android:background="@drawable/circle_button"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:layout_width="30dp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"/>-->
-
-    <!--</RelativeLayout>-->
-
     <TextView
         android:id="@+id/textViewTimerResult"
         android:background="@drawable/border_bottom_view"
@@ -30,6 +16,6 @@
         android:textColor="@color/colorBlue"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:fontFamily="casual"/>
+        android:fontFamily="serif"/>
 
 </android.support.percent.PercentRelativeLayout>
