@@ -49,7 +49,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     int index = 1;
 
     StopWatch timer = new StopWatch();
-    final int REFRESH_RATE = 1000;
+    final int REFRESH_RATE = 100;
 
     final Handler handler = new Handler(){
         @Override
@@ -62,14 +62,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     break;
 
                 case MSG_UPDATE_TIMER:
-                    long sec, min, hour;
-                    sec = timer.getElapsedTime()/1000;
-                    hour = sec / 3600;
-                    sec = sec - 3600 * hour;
-                    min = sec / 60;
-                    sec = sec - 60 * min;
+                    long sec, min, miliSec;
+                    miliSec = timer.getElapsedTime()/100;
+                    min = miliSec / 600;
+                    miliSec = miliSec - 600 * min;
+                    sec = miliSec / 10;
+                    miliSec = miliSec - 10 * sec;
 
-                    String secStr = null, minStr = null, hourStr = null;
+                    String secStr = null, minStr = null, miliSecStr = null;
 
                     if(sec < 10){
                         secStr = "0" + sec;
@@ -81,13 +81,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     } else {
                         minStr = min + "";
                     }
-                    if(hour < 10){
-                        hourStr = "0" + hour;
-                    } else {
-                        hourStr = hour + "";
-                    }
 
-                    timeClock = hourStr + ":" + minStr + "," + secStr;
+                    timeClock = minStr + ":" + secStr + "," + miliSec;
 
                     //Log.e("Time",timeClock);
 
